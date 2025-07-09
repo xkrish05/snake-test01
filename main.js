@@ -34,6 +34,38 @@ window.addEventListener("DOMContentLoaded", () => {
   createBubbles();
 });
 
+let touchStartX = 0;
+let touchStartY = 0;
+
+document.addEventListener('touchstart', function(e) {
+  const touch = e.touches[0];
+  touchStartX = touch.clientX;
+  touchStartY = touch.clientY;
+}, false);
+
+document.addEventListener('touchend', function(e) {
+  const touch = e.changedTouches[0];
+  const deltaX = touch.clientX - touchStartX;
+  const deltaY = touch.clientY - touchStartY;
+
+  const absDeltaX = Math.abs(deltaX);
+  const absDeltaY = Math.abs(deltaY);
+
+  let moved = false;
+
+  if (absDeltaX > absDeltaY) {
+    if (deltaX > 30) { Snake.moveRight(); moved = true; }
+    else if (deltaX < -30) { Snake.moveLeft(); moved = true; }
+  } else {
+    if (deltaY > 30) { Snake.moveDown(); moved = true; }
+    else if (deltaY < -30) { Snake.moveUp(); moved = true; }
+  }
+
+  if (moved) {
+    moveSound.currentTime = 0;
+    moveSound.play();
+  }
+}, false);
 
 window.addEventListener('keydown', function(event){
     let moved = false;
