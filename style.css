@@ -1,0 +1,44 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+body {
+    background-color: rgb(36, 36, 36);
+    font-family: "Press Start 2P", system-ui;
+    transform: scale(1);
+
+}
+
+#av-wrapper {
+
+    width: 100vw;
+    height: 100vh;
+    max-width: calc(100vh * 9 / 16);
+    aspect-ratio: 9 / 16;
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+    margin: auto;
+    /* padding: 20px; */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+
+
+canvas {
+    
+    position: relative;
+    /* top: 50%;
+    left: 50%;
+    translate: -50% -50%; */
+    /* background-color: blue; */
+    background: url('grass_day.png');
+}
+
+
+
+.assets{
+    display: none;
+}
